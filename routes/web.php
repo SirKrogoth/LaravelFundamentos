@@ -16,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
-Route::get('/clients', [ClientController::class, 'index']);
+
+Route::get('/client', [ClientController::class, 'index'])->name('clients.index');
+Route::get('/client/create', [ClientController::class, 'create'])->name('clients.create');
+Route::get('/client/{id}', [ClientController::class, 'show'])->name('clients.show');
+Route::post('/client', [ClientController::class, 'store'])->name('clients.store');
+
+Route::get('/client/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+Route::put('/client/{id}', [ClientController::class, 'update'])->name('clients.update');
+
+Route::delete('/client/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
